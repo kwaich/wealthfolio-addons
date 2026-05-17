@@ -1,0 +1,187 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://wealthfolio.app/schemas/addon-store.schema.json",
+  "title": "Wealthfolio Addon Store Metadata",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["id", "trust", "verification", "status", "tags"],
+  "properties": {
+    "$schema": {
+      "type": "string"
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+[a-z0-9-]*[a-z0-9]$"
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1
+    },
+    "description": {
+      "type": "string",
+      "minLength": 1
+    },
+    "author": {
+      "oneOf": [
+        {
+          "type": "string",
+          "minLength": 1
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["name"],
+          "properties": {
+            "name": {
+              "type": "string",
+              "minLength": 1
+            },
+            "url": {
+              "type": "string",
+              "format": "uri"
+            }
+          }
+        }
+      ]
+    },
+    "trust": {
+      "enum": ["official", "community"]
+    },
+    "verification": {
+      "enum": ["verified", "unverified"]
+    },
+    "status": {
+      "enum": ["active", "coming-soon", "deprecated", "inactive"]
+    },
+    "featured": {
+      "type": "boolean"
+    },
+    "tags": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^[a-z0-9]+[a-z0-9-]*[a-z0-9]$"
+      },
+      "uniqueItems": true
+    },
+    "repository": {
+      "type": "string",
+      "format": "uri"
+    },
+    "supportUrl": {
+      "type": "string",
+      "format": "uri"
+    },
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["repository"],
+      "properties": {
+        "repository": {
+          "type": "string",
+          "format": "uri"
+        },
+        "tag": {
+          "type": "string",
+          "minLength": 1
+        },
+        "commit": {
+          "type": "string",
+          "minLength": 7
+        }
+      }
+    },
+    "release": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["version", "minWealthfolioVersion"],
+      "properties": {
+        "version": {
+          "type": "string",
+          "pattern": "^\\d+\\.\\d+\\.\\d+(-[0-9A-Za-z.-]+)?$"
+        },
+        "minWealthfolioVersion": {
+          "type": "string",
+          "pattern": "^\\d+\\.\\d+\\.\\d+(-[0-9A-Za-z.-]+)?$"
+        },
+        "sdkVersion": {
+          "type": "string",
+          "pattern": "^\\d+\\.\\d+\\.\\d+(-[0-9A-Za-z.-]+)?$"
+        },
+        "critical": {
+          "type": "boolean"
+        },
+        "breaking": {
+          "type": "boolean"
+        },
+        "notes": {
+          "type": "string"
+        },
+        "changelogUrl": {
+          "type": "string",
+          "format": "uri"
+        }
+      }
+    },
+    "distribution": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "r2Path": {
+          "type": "string",
+          "minLength": 1
+        },
+        "downloadUrl": {
+          "type": "string",
+          "format": "uri"
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        }
+      }
+    },
+    "media": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "coverLight": {
+          "type": "string",
+          "minLength": 1
+        },
+        "coverDark": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "verification": {
+            "const": "verified"
+          }
+        },
+        "required": ["verification"]
+      },
+      "then": {
+        "required": ["release", "distribution", "media"]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "trust": {
+            "const": "community"
+          }
+        },
+        "required": ["trust"]
+      },
+      "then": {
+        "required": ["name", "description", "author", "repository"]
+      }
+    }
+  ]
+}

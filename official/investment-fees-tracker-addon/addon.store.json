@@ -1,0 +1,26 @@
+{
+  "$schema": "../../schemas/addon-store.schema.json",
+  "id": "investment-fees-tracker-addon",
+  "trust": "official",
+  "verification": "verified",
+  "status": "active",
+  "featured": true,
+  "tags": ["analytics", "fees", "portfolio"],
+  "release": {
+    "version": "3.4.0",
+    "minWealthfolioVersion": "3.4.0",
+    "sdkVersion": "3.4.0",
+    "critical": false,
+    "breaking": false,
+    "notes": "Updated for Wealthfolio 3.4.0 with improved compatibility and refinements.",
+    "changelogUrl": "https://github.com/wealthfolio/wealthfolio-addons/tree/main/official/investment-fees-tracker-addon/CHANGELOG.md"
+  },
+  "distribution": {
+    "r2Path": "investment-fees-tracker-addon/3.4.0/investment-fees-tracker-addon.zip"
+  },
+  "media": {
+    "coverLight": "assets/cover-light.webp",
+    "coverDark": "assets/cover-dark.webp"
+  },
+  "supportUrl": "https://github.com/wealthfolio/wealthfolio-addons/issues"
+}
