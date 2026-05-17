@@ -33,8 +33,8 @@ Required PR content:
 
 ```text
 community/verified/<addon-id>/addon.store.json
-community/verified/<addon-id>/assets/cover-light.png
-community/verified/<addon-id>/assets/cover-dark.png
+community/verified/<addon-id>/assets/cover-light.webp
+community/verified/<addon-id>/assets/cover-dark.webp
 ```
 
 Start from:
@@ -50,7 +50,7 @@ Verified community addons require:
 - valid Wealthfolio `manifest.json`
 - declared permissions with clear purposes
 - release notes and support URL
-- 16:9 light and dark screenshots
+- 16:9 light and dark screenshots referenced by `addon.store.json`
 - Wealthfolio-built artifact prepared for the catalog/store release pipeline
 
 Do not attach arbitrary release zips directly to the PR. Wealthfolio CI should
@@ -98,19 +98,19 @@ Do not put dynamic metrics such as downloads, rating, or review count in
 
 ## Status Values
 
-| Status | Meaning |
-| --- | --- |
-| `active` | Visible and usable for its verification level |
-| `coming-soon` | Visible but not installable yet |
-| `deprecated` | Visible with warning; new installs discouraged |
-| `inactive` | Hidden from normal browsing |
+| Status        | Meaning                                        |
+| ------------- | ---------------------------------------------- |
+| `active`      | Visible and usable for its verification level  |
+| `coming-soon` | Visible but not installable yet                |
+| `deprecated`  | Visible with warning; new installs discouraged |
+| `inactive`    | Hidden from normal browsing                    |
 
 ## Verification Values
 
-| Verification | Meaning |
-| --- | --- |
-| `unverified` | Discovery listing only |
-| `verified` | Reviewed and built by Wealthfolio |
+| Verification | Meaning                           |
+| ------------ | --------------------------------- |
+| `unverified` | Discovery listing only            |
+| `verified`   | Reviewed and built by Wealthfolio |
 
 ## Local Checks
 
@@ -121,6 +121,9 @@ pnpm install
 pnpm validate:addons
 pnpm generate
 ```
+
+If you are moving an addon from the old app repository layout, read
+[docs/repository-migration.md](docs/repository-migration.md) first.
 
 For official addon source changes, also run:
 
@@ -140,16 +143,20 @@ pnpm bundle:official
 
 ## Screenshots
 
-Use 16:9 png or WebP screenshots:
+Use 16:9 WebP screenshots by default:
 
 ```text
-assets/cover-light.png
-assets/cover-dark.png
+assets/cover-light.webp
+assets/cover-dark.webp
 ```
 
-The catalog/store release pipeline should upload them to:
+If you use png instead, update `addon.store.json` to match the actual file
+names.
+
+The catalog/store release pipeline maps these repo-local files to the current
+catalog CDN convention:
 
 ```text
-https://assets.wealthfolio.app/images/addons/<addon-id>/cover-light.png
-https://assets.wealthfolio.app/images/addons/<addon-id>/cover-dark.png
+https://assets.wealthfolio.app/images/addons/<addon-id>-<version>.webp
+https://assets.wealthfolio.app/images/addons/<addon-id>-<version>-dark.webp
 ```

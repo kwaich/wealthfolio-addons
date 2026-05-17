@@ -9,6 +9,9 @@ download metrics live outside this repo.
 
 Addon developer documentation: [wealthfolio.app/docs/addons](https://wealthfolio.app/docs/addons/)
 
+Repo split and migration notes:
+[docs/repository-migration.md](docs/repository-migration.md)
+
 ## Structure
 
 ```text
@@ -18,15 +21,16 @@ community/verified/          Community addons approved for install from Wealthfo
 templates/                   Submission templates
 schemas/                     JSON schemas for addon metadata
 scripts/                     Validation and README generation helpers
+docs/                        Repository migration and maintainer notes
 ```
 
 ## Trust Model
 
-| Label | Owner | Verification | Install behavior |
-| --- | --- | --- | --- |
-| Official | Wealthfolio | Verified | Installable from Wealthfolio |
-| Verified Community | Community author | Verified | Installable from Wealthfolio, author-supported |
-| Community Directory | Community author | Unverified | Discovery listing only |
+| Label               | Owner            | Verification | Install behavior                               |
+| ------------------- | ---------------- | ------------ | ---------------------------------------------- |
+| Official            | Wealthfolio      | Verified     | Installable from Wealthfolio                   |
+| Verified Community  | Community author | Verified     | Installable from Wealthfolio, author-supported |
+| Community Directory | Community author | Unverified   | Discovery listing only                         |
 
 `trust` and `verification` are intentionally separate:
 
@@ -59,15 +63,15 @@ pnpm type-check:official
 pnpm bundle:official
 ```
 
-| Script | Description |
-| --- | --- |
-| `pnpm build:official` | Builds every addon under `official/*` and writes each addon's `dist/addon.js`. |
-| `pnpm bundle:official` | Cleans, builds, and zips every official addon for release handoff. |
-| `pnpm type-check:official` | Runs TypeScript checks for every official addon without emitting files. |
-| `pnpm validate:addons` | Validates addon metadata, duplicate IDs, manifest consistency, dependency versions, and missing media warnings. |
-| `pnpm generate:readme` | Regenerates the official and community addon tables from `addon.store.json` files. |
-| `pnpm generate` | Alias for `pnpm generate:readme`. |
-| `pnpm check` | Runs addon metadata validation and official addon type checks. |
+| Script                     | Description                                                                                                     |
+| -------------------------- | --------------------------------------------------------------------------------------------------------------- |
+| `pnpm build:official`      | Builds every addon under `official/*` and writes each addon's `dist/addon.js`.                                  |
+| `pnpm bundle:official`     | Cleans, builds, and zips every official addon for release handoff.                                              |
+| `pnpm type-check:official` | Runs TypeScript checks for every official addon without emitting files.                                         |
+| `pnpm validate:addons`     | Validates addon metadata, duplicate IDs, manifest consistency, dependency versions, and missing media warnings. |
+| `pnpm generate:readme`     | Regenerates the official and community addon tables from `addon.store.json` files.                              |
+| `pnpm generate`            | Alias for `pnpm generate:readme`.                                                                               |
+| `pnpm check`               | Runs addon metadata validation and official addon type checks.                                                  |
 
 Generated files:
 
@@ -76,11 +80,11 @@ Generated files:
 
 ## Official Addons
 
-| Addon | Path |
-| --- | --- |
-| Goal Progress Tracker | `official/goal-progress-tracker-addon` |
+| Addon                   | Path                                     |
+| ----------------------- | ---------------------------------------- |
+| Goal Progress Tracker   | `official/goal-progress-tracker-addon`   |
 | Investment Fees Tracker | `official/investment-fees-tracker-addon` |
-| Swingfolio | `official/swingfolio-addon` |
+| Swingfolio              | `official/swingfolio-addon`              |
 
 ## Release Flow
 
