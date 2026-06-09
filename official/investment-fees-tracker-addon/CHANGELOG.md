@@ -7,6 +7,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [3.5.1] - 2026-06-09
+
+### Changed
+
+- Updated `@wealthfolio/addon-sdk`, `@wealthfolio/ui`, and
+  `@wealthfolio/addon-dev-tools` to 3.5.1 for Wealthfolio 3.5.1 compatibility
+- Bumped manifest and store release metadata to 3.5.1
+
 ## [3.0.0] - 2026-02-24
 
 ### Changed
