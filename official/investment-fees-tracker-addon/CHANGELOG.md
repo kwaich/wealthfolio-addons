@@ -9,11 +9,14 @@ and this project adheres to
 
 ## [3.5.1] - 2026-06-09
 
+### Fixed
+
+- Fixed an error that could stop the fees dashboard from loading. Fee totals and
+  your portfolio value are now calculated correctly across all of your accounts.
+
 ### Changed
 
-- Updated `@wealthfolio/addon-sdk`, `@wealthfolio/ui`, and
-  `@wealthfolio/addon-dev-tools` to 3.5.1 for Wealthfolio 3.5.1 compatibility
-- Bumped manifest and store release metadata to 3.5.1
+- Updated for compatibility with Wealthfolio 3.6.0.
 
 ## [3.0.0] - 2026-02-24
 

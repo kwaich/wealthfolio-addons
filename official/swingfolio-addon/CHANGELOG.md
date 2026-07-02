@@ -6,6 +6,32 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [3.5.1] - 2026-06-09
+
+### Added
+
+- Tap any day or month on the calendar to open a breakdown of the trades behind
+  that result.
+- Mobile section switcher to jump between Overview, Calendar, Positions, and
+  Analysis on phones and narrow windows, plus a new "Default Mobile Section"
+  setting to choose which one opens first.
+- New "Calendar Week Start" setting to begin the week on your region's default,
+  Sunday, or Monday.
+
+### Fixed
+
+- Open positions now show their live current price and value again. A change in
+  how Wealthfolio reports holdings had left these blank for some setups.
+
+### Improved
+
+- Refreshed calendar and mobile layouts, including an easier time-period picker
+  on small screens.
+
+### Changed
+
+- Updated for compatibility with Wealthfolio 3.6.0.
+
 ## [3.1.0] - 2026-03-15
 
 ### Improved

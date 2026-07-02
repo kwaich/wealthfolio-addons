@@ -8,11 +8,11 @@
   "tags": ["analytics", "fees", "portfolio"],
   "release": {
     "version": "3.5.1",
-    "minWealthfolioVersion": "3.5.0",
+    "minWealthfolioVersion": "3.6.0",
     "sdkVersion": "3.5.1",
     "critical": false,
     "breaking": false,
-    "notes": "Updated for Wealthfolio 3.5.1; compatible with Wealthfolio 3.5.0 and later.",
+    "notes": "Requires Wealthfolio 3.6.0 or later.",
     "changelogUrl": "https://github.com/wealthfolio/wealthfolio-addons/tree/main/official/investment-fees-tracker-addon/CHANGELOG.md"
   },
   "distribution": {

@@ -1,7 +1,17 @@
 import react from "@vitejs/plugin-react";
 import tailwindcss from "@tailwindcss/vite";
 import { defineConfig } from "vite";
-import externalGlobals from "rollup-plugin-external-globals";
+
+const hostProvidedDependencies = [
+  "@tanstack/react-query",
+  "@wealthfolio/addon-sdk",
+  "@wealthfolio/ui",
+  "react",
+  "react-dom",
+  "react-dom/client",
+  "react/jsx-dev-runtime",
+  "react/jsx-runtime",
+];
 
 export default defineConfig({
   plugins: [react(), tailwindcss()],
@@ -18,23 +28,10 @@ export default defineConfig({
       formats: ["es"],
     },
     rollupOptions: {
-      // Externalize React and ReactDOM so the addon uses the host's version
-      external: ["react", "react-dom"],
-      plugins: [
-        externalGlobals({
-          react: "React",
-          "react-dom": "ReactDOM",
-        }),
-      ],
-      output: {
-        globals: {
-          react: "React", // Assumes React is available as window.React
-          "react-dom": "ReactDOM", // Assumes ReactDOM is available as window.ReactDOM
-        },
-      },
+      external: hostProvidedDependencies,
     },
     outDir: "dist",
-    minify: false, // Keep readable for debugging
-    sourcemap: true,
+    minify: true,
+    sourcemap: false,
   },
 });
