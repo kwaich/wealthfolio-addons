@@ -1,12 +1,21 @@
 {
   "id": "swingfolio-addon",
   "name": "Swingfolio: Simple Stock Trading Tracker",
-  "version": "3.4.0",
+  "version": "3.6.0",
   "description": "A simple swing stock trading tracker with performance analytics and calendar views",
   "author": "Wealthfolio",
   "main": "dist/addon.js",
-  "sdkVersion": "3.4.0",
+  "sdkVersion": "3.6.0",
+  "minWealthfolioVersion": "3.6.0",
   "enabled": true,
+  "hostDependencies": {
+    "@tanstack/react-query": "^5.90.0",
+    "@wealthfolio/addon-sdk": "^3.6.0",
+    "@wealthfolio/ui": "^3.6.0",
+    "date-fns": "^4.1.0",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0"
+  },
   "permissions": [
     {
       "category": "activities",
@@ -19,7 +28,7 @@
       "purpose": "Access portfolio holdings to calculate unrealized P/L for open positions"
     },
     {
-      "category": "exchangeRates",
+      "category": "currency",
       "functions": ["getAll"],
       "purpose": "Access to exchange rates and currency data"
     },
@@ -30,7 +39,7 @@
     },
     {
       "category": "ui",
-      "functions": ["sidebar.addItem", "router.add"],
+      "functions": ["sidebar.addItem", "router.add", "navigation.navigate", "onDisable"],
       "purpose": "Add navigation and routing for swing trading interface"
     }
   ]

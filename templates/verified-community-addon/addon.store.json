@@ -20,8 +20,8 @@
   },
   "release": {
     "version": "1.0.0",
-    "minWealthfolioVersion": "3.4.0",
-    "sdkVersion": "3.4.0",
+    "minWealthfolioVersion": "3.6.0",
+    "sdkVersion": "3.5.1",
     "critical": false,
     "breaking": false,
     "notes": "Initial verified community release.",
