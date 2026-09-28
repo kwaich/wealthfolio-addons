@@ -1,6 +1,51 @@
 {
-  "generatedAt": "2026-09-28T08:56:17.233Z",
+  "generatedAt": "2026-09-28T09:01:51.448Z",
   "addons": {
+    "adanos-sentiment": {
+      "id": "adanos-sentiment",
+      "runtimeId": "adanos-sentiment",
+      "repository": "https://github.com/adanos-software/wealthfolio-adanos-sentiment",
+      "defaultBranch": "main",
+      "commit": "215fffe2953fc4cd72dbd5f02bf805989f9eee5c",
+      "license": "MIT",
+      "lastPushedAt": "2026-08-25",
+      "manifest": {
+        "name": "Adanos Sentiment",
+        "version": "1.1.0",
+        "sdkVersion": "3.7.0",
+        "minWealthfolioVersion": "3.7.0",
+        "permissions": [
+          {
+            "category": "portfolio",
+            "purpose": "Read the current portfolio holdings and map the largest positions to Adanos ticker sentiment"
+          },
+          {
+            "category": "secrets",
+            "purpose": "Store the Adanos API key securely in addon-scoped encrypted storage"
+          },
+          {
+            "category": "network",
+            "purpose": "Fetch sentiment and quota data from api.adanos.org for portfolio tickers"
+          }
+        ]
+      },
+      "dataHandling": {
+        "userDataLeavesDevice": true,
+        "externalServices": [
+          {
+            "host": "api.adanos.org"
+          }
+        ],
+        "basis": "It asked for internet access and can reach the sites listed here, if you allow that when you install it."
+      },
+      "compatibility": {
+        "state": "current",
+        "detail": "Built against SDK 3.7.0."
+      },
+      "notices": [],
+      "problems": [],
+      "warnings": []
+    },
     "asset-and-cash-timeline": {
       "id": "asset-and-cash-timeline",
       "runtimeId": "asset-and-cash-timeline",
@@ -44,7 +89,7 @@
       "dataHandling": {
         "userDataLeavesDevice": null,
         "externalServices": [],
-        "basis": "Built before the 3.6 sandbox, when addons could reach the network without declaring it, so the manifest cannot show where data goes."
+        "basis": "Built before Wealthfolio 3.6, back when add-ons could go online without asking. There is no way to tell from the outside where its data goes."
       },
       "compatibility": {
         "state": "predates-sandbox",
@@ -85,7 +130,7 @@
       "dataHandling": {
         "userDataLeavesDevice": false,
         "externalServices": [],
-        "basis": "The addon does not request the network permission, so the Wealthfolio runtime blocks all outbound requests."
+        "basis": "It never asked for internet access, so Wealthfolio will not let it connect to anything."
       },
       "compatibility": {
         "state": "current",
@@ -126,7 +171,7 @@
       "dataHandling": {
         "userDataLeavesDevice": null,
         "externalServices": [],
-        "basis": "Built before the 3.6 sandbox, when addons could reach the network without declaring it, so the manifest cannot show where data goes."
+        "basis": "Built before Wealthfolio 3.6, back when add-ons could go online without asking. There is no way to tell from the outside where its data goes."
       },
       "compatibility": {
         "state": "predates-sandbox",
@@ -189,7 +234,7 @@
       "dataHandling": {
         "userDataLeavesDevice": false,
         "externalServices": [],
-        "basis": "The addon does not request the network permission, so the Wealthfolio runtime blocks all outbound requests."
+        "basis": "It never asked for internet access, so Wealthfolio will not let it connect to anything."
       },
       "compatibility": {
         "state": "current",
@@ -248,7 +293,7 @@
       "dataHandling": {
         "userDataLeavesDevice": null,
         "externalServices": [],
-        "basis": "Built before the 3.6 sandbox, when addons could reach the network without declaring it, so the manifest cannot show where data goes."
+        "basis": "Built before Wealthfolio 3.6, back when add-ons could go online without asking. There is no way to tell from the outside where its data goes."
       },
       "compatibility": {
         "state": "predates-sandbox",
@@ -258,6 +303,70 @@
       "problems": [],
       "warnings": []
     },
+    "myinvestor-importer-addon": {
+      "id": "myinvestor-importer-addon",
+      "runtimeId": "myinvestor-importer",
+      "repository": "https://github.com/blastik/myinvestor-importer-addon",
+      "defaultBranch": "main",
+      "commit": "287ef81d0b3f0b9890bc0df89b25d5643be8da81",
+      "license": "MIT",
+      "lastPushedAt": "2026-08-24",
+      "manifest": {
+        "name": "MyInvestor Importer",
+        "version": "1.0.2",
+        "sdkVersion": "3.7.0",
+        "minWealthfolioVersion": "3.6.0",
+        "permissions": [
+          {
+            "category": "accounts",
+            "purpose": "List accounts so the user can select their MyInvestor account"
+          },
+          {
+            "category": "activities",
+            "purpose": "Validate and import activities parsed from the MyInvestor exports; read existing account activities to avoid double-recording money already imported as a cross-account transfer by another addon"
+          },
+          {
+            "category": "assets",
+            "purpose": "Create new asset entries for unrecognised funds during import"
+          },
+          {
+            "category": "secrets",
+            "purpose": "Persist addon configuration (account selection, security mappings) across sessions"
+          },
+          {
+            "category": "ui",
+            "purpose": "Add importer navigation item to sidebar and register addon routes"
+          },
+          {
+            "category": "query",
+            "purpose": "Refresh host application data after import"
+          },
+          {
+            "category": "portfolio",
+            "purpose": "Trigger portfolio recalculation after import"
+          },
+          {
+            "category": "market-data",
+            "purpose": "Search for securities when mapping unrecognised funds"
+          }
+        ]
+      },
+      "dataHandling": {
+        "userDataLeavesDevice": false,
+        "externalServices": [],
+        "basis": "It never asked for internet access, so Wealthfolio will not let it connect to anything."
+      },
+      "compatibility": {
+        "state": "current",
+        "detail": "Built against SDK 3.7.0."
+      },
+      "notices": [],
+      "problems": [],
+      "warnings": [
+        "declares the secrets permission but not network, so any service it stores credentials for is unreachable",
+        "manifest id \"myinvestor-importer\" differs from the listing id \"myinvestor-importer-addon\""
+      ]
+    },
     "rebalancer": {
       "id": "rebalancer",
       "runtimeId": "rebalancer",
@@ -265,7 +374,7 @@
       "defaultBranch": "main",
       "commit": "f5105d6017bedde79248730395123f36a187ef4b",
       "license": null,
-      "lastPushedAt": "2026-08-17",
+      "lastPushedAt": "2026-08-24",
       "manifest": {
         "name": "rebalancer",
         "version": "3.1.0",
@@ -297,7 +406,7 @@
       "dataHandling": {
         "userDataLeavesDevice": false,
         "externalServices": [],
-        "basis": "The addon does not request the network permission, so the Wealthfolio runtime blocks all outbound requests."
+        "basis": "It never asked for internet access, so Wealthfolio will not let it connect to anything."
       },
       "compatibility": {
         "state": "current",
@@ -310,6 +419,197 @@
         "repository has no detectable licence, so users have no right to use the addon"
       ],
       "warnings": []
+    },
+    "simplefin-sync": {
+      "id": "simplefin-sync",
+      "runtimeId": "simplefin-sync",
+      "repository": "https://github.com/Bubbles840/wealthfolio-simplefin-addon",
+      "defaultBranch": "main",
+      "commit": "f294965239dd61a0bc2c1224435f2fdac6c04d34",
+      "license": "MIT",
+      "lastPushedAt": "2026-08-25",
+      "manifest": {
+        "name": "SimpleFin Sync",
+        "version": "1.24.1",
+        "sdkVersion": "3.6.2",
+        "minWealthfolioVersion": "3.6.2",
+        "permissions": [
+          {
+            "category": "accounts",
+            "purpose": "Show existing accounts, and optionally create new Wealthfolio accounts, for mapping to SimpleFin accounts"
+          },
+          {
+            "category": "activities",
+            "purpose": "Import bank transactions, reconcile pending transactions (create/update/delete), and link transfer pairs"
+          },
+          {
+            "category": "navigation",
+            "purpose": "Open a mapped account's page in Wealthfolio when its row is clicked"
+          },
+          {
+            "category": "portfolio",
+            "purpose": "Read current account balances to size one-time starting-balance corrections"
+          },
+          {
+            "category": "secrets",
+            "purpose": "Store SimpleFin credentials and sync configuration securely"
+          },
+          {
+            "category": "network",
+            "purpose": "Fetch transaction data from SimpleFin Bridge"
+          },
+          {
+            "category": "ui",
+            "purpose": "Register sidebar navigation item and route for SimpleFin Sync"
+          }
+        ]
+      },
+      "dataHandling": {
+        "userDataLeavesDevice": true,
+        "externalServices": [
+          {
+            "host": "bridge.simplefin.org"
+          },
+          {
+            "host": "beta-bridge.simplefin.org"
+          },
+          {
+            "host": "api.telegram.org"
+          }
+        ],
+        "basis": "It asked for internet access and can reach the sites listed here, if you allow that when you install it."
+      },
+      "compatibility": {
+        "state": "current",
+        "detail": "Built against SDK 3.6.2."
+      },
+      "notices": [],
+      "problems": [],
+      "warnings": []
+    },
+    "simplefin-wealthfolio-addon": {
+      "id": "simplefin-wealthfolio-addon",
+      "runtimeId": "simplefin-wealthfolio-addon",
+      "repository": "https://github.com/christancho/simplefin-wealthfolio-addon",
+      "defaultBranch": "main",
+      "commit": "0e8f2c1e7a34e075879752a45de2c42366260988",
+      "license": "MIT",
+      "lastPushedAt": "2026-08-28",
+      "manifest": {
+        "name": "SimpleFIN Sync",
+        "version": "1.1.0",
+        "sdkVersion": "3.6.2",
+        "minWealthfolioVersion": "3.6.2",
+        "permissions": [
+          {
+            "category": "network",
+            "purpose": "Fetch accounts, transactions and holdings from the SimpleFIN Bridge."
+          },
+          {
+            "category": "secrets",
+            "purpose": "Store the SimpleFIN access credentials in the system keyring, and let the host attach them to brokered SimpleFIN Bridge requests without exposing the plaintext to the addon."
+          },
+          {
+            "category": "accounts",
+            "purpose": "List Wealthfolio accounts to map against, and create new ones on request."
+          },
+          {
+            "category": "activities",
+            "purpose": "Import cash transactions fetched from SimpleFIN, and reconcile credit-card payments and cash-to-cash transfers into linked transfers."
+          },
+          {
+            "category": "snapshots",
+            "purpose": "Import holdings snapshots for investment accounts."
+          },
+          {
+            "category": "portfolio",
+            "purpose": "Recalculate a CASH account's balance after backfilling its full history, so the opening-balance gap against SimpleFIN can be measured accurately."
+          }
+        ]
+      },
+      "dataHandling": {
+        "userDataLeavesDevice": true,
+        "externalServices": [
+          {
+            "host": "bridge.simplefin.org"
+          },
+          {
+            "host": "beta-bridge.simplefin.org"
+          }
+        ],
+        "basis": "It asked for internet access and can reach the sites listed here, if you allow that when you install it."
+      },
+      "compatibility": {
+        "state": "current",
+        "detail": "Built against SDK 3.6.2."
+      },
+      "notices": [],
+      "problems": [],
+      "warnings": []
+    },
+    "trade-republic-importer-addon": {
+      "id": "trade-republic-importer-addon",
+      "runtimeId": "trade-republic-importer",
+      "repository": "https://github.com/blastik/trade-republic-importer-addon",
+      "defaultBranch": "main",
+      "commit": "bc5d25bddbeaa3c7a803a54147f12be5d852f9f3",
+      "license": "MIT",
+      "lastPushedAt": "2026-08-24",
+      "manifest": {
+        "name": "Trade Republic Importer",
+        "version": "1.3.3",
+        "sdkVersion": "3.7.0",
+        "minWealthfolioVersion": "3.6.0",
+        "permissions": [
+          {
+            "category": "accounts",
+            "purpose": "List accounts so the user can select their cash and portfolio accounts"
+          },
+          {
+            "category": "activities",
+            "purpose": "Validate and import activities parsed from the Trade Republic CSV"
+          },
+          {
+            "category": "assets",
+            "purpose": "Create new asset entries for unrecognised securities during import"
+          },
+          {
+            "category": "secrets",
+            "purpose": "Persist addon configuration (account selection, transfer patterns) across sessions"
+          },
+          {
+            "category": "ui",
+            "purpose": "Add importer navigation item to sidebar and register addon routes"
+          },
+          {
+            "category": "query",
+            "purpose": "Refresh host application data after import"
+          },
+          {
+            "category": "portfolio",
+            "purpose": "Trigger portfolio recalculation after import"
+          },
+          {
+            "category": "market-data",
+            "purpose": "Search for securities when mapping unrecognised tickers"
+          }
+        ]
+      },
+      "dataHandling": {
+        "userDataLeavesDevice": false,
+        "externalServices": [],
+        "basis": "It never asked for internet access, so Wealthfolio will not let it connect to anything."
+      },
+      "compatibility": {
+        "state": "current",
+        "detail": "Built against SDK 3.7.0."
+      },
+      "notices": [],
+      "problems": [],
+      "warnings": [
+        "declares the secrets permission but not network, so any service it stores credentials for is unreachable",
+        "manifest id \"trade-republic-importer\" differs from the listing id \"trade-republic-importer-addon\""
+      ]
     },
     "value-averaging-addon": {
       "id": "value-averaging-addon",
@@ -350,7 +650,7 @@
       "dataHandling": {
         "userDataLeavesDevice": null,
         "externalServices": [],
-        "basis": "Built before the 3.6 sandbox, when addons could reach the network without declaring it, so the manifest cannot show where data goes."
+        "basis": "Built before Wealthfolio 3.6, back when add-ons could go online without asking. There is no way to tell from the outside where its data goes."
       },
       "compatibility": {
         "state": "predates-sandbox",
@@ -359,6 +659,69 @@
       "notices": [
         "not-financial-advice",
         "not-investment-advice"
+      ],
+      "problems": [],
+      "warnings": []
+    },
+    "wealthfolio-skatt": {
+      "id": "wealthfolio-skatt",
+      "runtimeId": "wealthfolio-skatt",
+      "repository": "https://github.com/AlexanderBabel/wealthfolio-skatt",
+      "defaultBranch": "main",
+      "commit": "f7bbdb6573891690026ba8eb4b0e3b4c7e0e3332",
+      "license": "MIT",
+      "lastPushedAt": "2026-08-25",
+      "manifest": {
+        "name": "Skatt (Sweden)",
+        "version": "1.2.0",
+        "sdkVersion": "3.6.2",
+        "minWealthfolioVersion": "3.6.2",
+        "permissions": [
+          {
+            "category": "accounts",
+            "purpose": "List accounts so each one can be classified as ISK, depå or untaxed."
+          },
+          {
+            "category": "portfolio",
+            "purpose": "Read the account value at each quarter start for the ISK kapitalunderlag, and current depå holdings to tell fund/ETF units apart from individual shares."
+          },
+          {
+            "category": "activities",
+            "purpose": "Read deposits, trades, dividends and interest to compute the taxable amounts."
+          },
+          {
+            "category": "currency",
+            "purpose": "Convert amounts in a currency the account itself does not use into SEK."
+          },
+          {
+            "category": "quotes",
+            "purpose": "Read the daily exchange-rate history so a trade is converted at the rate on its own date, and each depå holding's own price history for the fund schablonintäkt."
+          },
+          {
+            "category": "assets",
+            "purpose": "Tell fund and ETF holdings in a depå apart from individual shares, since only funds carry the 0.4 % schablonintäkt."
+          },
+          {
+            "category": "events",
+            "purpose": "Know when a trade, edit or import changes the portfolio, so the cached figures refresh then instead of on a timer."
+          },
+          {
+            "category": "files",
+            "purpose": "Save the K4 avsnitt A export as a CSV file where you choose."
+          }
+        ]
+      },
+      "dataHandling": {
+        "userDataLeavesDevice": false,
+        "externalServices": [],
+        "basis": "It never asked for internet access, so Wealthfolio will not let it connect to anything."
+      },
+      "compatibility": {
+        "state": "current",
+        "detail": "Built against SDK 3.6.2."
+      },
+      "notices": [
+        "not-tax-advice"
       ],
       "problems": [],
       "warnings": []
