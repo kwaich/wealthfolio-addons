@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-21T00:34:49.349Z",
+  "generatedAt": "2026-09-28T08:56:17.233Z",
   "addons": {
     "asset-and-cash-timeline": {
       "id": "asset-and-cash-timeline",
@@ -59,14 +59,14 @@
       "runtimeId": "degiro-importer",
       "repository": "https://github.com/shuisman/degiro-importer",
       "defaultBranch": "main",
-      "commit": "b6fa986a511352d9d14715425f85b197dd12efeb",
+      "commit": "4a53b30ebb8ea16bc25877a247b2c69ec06e96d9",
       "license": "MIT",
-      "lastPushedAt": "2026-06-20",
+      "lastPushedAt": "2026-09-28",
       "manifest": {
         "name": "DeGiro Importer",
-        "version": "1.0.1",
-        "sdkVersion": "3.3.0",
-        "minWealthfolioVersion": null,
+        "version": "1.1.0",
+        "sdkVersion": "3.9.0",
+        "minWealthfolioVersion": "3.6.2",
         "permissions": [
           {
             "category": "accounts",
@@ -77,19 +77,19 @@
             "purpose": "Import DeGiro activities and persist ISIN-to-ticker mappings between imports"
           },
           {
-            "category": "market",
+            "category": "market-data",
             "purpose": "Resolve ISINs to exchange tickers during the symbol mapping step"
           }
         ]
       },
       "dataHandling": {
-        "userDataLeavesDevice": null,
+        "userDataLeavesDevice": false,
         "externalServices": [],
-        "basis": "Built before the 3.6 sandbox, when addons could reach the network without declaring it, so the manifest cannot show where data goes."
+        "basis": "The addon does not request the network permission, so the Wealthfolio runtime blocks all outbound requests."
       },
       "compatibility": {
-        "state": "predates-sandbox",
-        "detail": "Built against SDK 3.3.0, before the 3.6 sandbox change. It may not work on current Wealthfolio."
+        "state": "current",
+        "detail": "Built against SDK 3.9.0."
       },
       "notices": [],
       "problems": [],
